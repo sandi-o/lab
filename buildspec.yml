@@ -1,0 +1,15 @@
+version: 0.10
+phases: 
+  install:
+    runtime-versions:
+      php: '7.2'
+    commands:
+    - composer install
+  build:
+    commands:
+    - phpunit
+reports:
+  test-report:
+    files:
+      - build/reports.xml
+    file-format: JunitXml

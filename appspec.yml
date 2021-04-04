@@ -4,10 +4,7 @@ files:
   - source: /
     destination: /var/www/html/lab/
 hooks:
-  AfterInstall:
-    - location: scripts/install_dependencies.sh
-      timeout: 300
-      runas: root
+  AfterInstall:   
     - location: scripts/deploy_laravel.sh
       timeout: 300
       runas: root
