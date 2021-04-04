@@ -19,6 +19,6 @@ reports:
   test-report:
     files:
       - 'reports.xml'
-    base-directory: 'build'
+    base-directory: 'builds'
     discard-paths: no
     file-format: "JUNITXML"
