@@ -13,7 +13,7 @@ phases:
     commands:      
       - ./vendor/bin/phpunit
 reports:
-  test-report:
+  arn:aws:codebuild:ap-southeast-1:414584919839:report-group/lab-build-application-test-report:
     files:
-      - build/reports.xml
-    file-format: JunitXml
+      - "reports/php/reports.xml"
+    file-format: "JUNITXML"
