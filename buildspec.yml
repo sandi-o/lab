@@ -12,8 +12,10 @@ phases:
   post_build:
     commands:      
       - ./vendor/bin/phpunit
+      - echo Build completed on `date`
+      - echo $CODEBUILD_SRC_DIR
 reports:
-  arn:aws:codebuild:ap-southeast-1:414584919839:report-group/lab-build-application-test-report:
+  lab-build-application-test-report:
     files:
       - "reports/php/reports.xml"
     file-format: "JUNITXML"
