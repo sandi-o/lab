@@ -39,7 +39,7 @@ class LabController extends Controller
         
         if($valid) {
             $results = array();
-            foreach(json_decode($request->data,true) as $key => $values) {
+            foreach(json_decode($request->data) as $key => $values) {
                 if(!$this->validKeyDataType($key)) {
                     return $this->error('Invalid data format.',422);
                 }

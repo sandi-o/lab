@@ -21,7 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login', 'AuthController@login');
 Route::post('/logout', 'AuthController@logout');
 
-
 Route::post('/labs','LabController@upstore');
 Route::get('/labs/get_all_records','LabController@showAll');
 Route::get('/labs/{code}','LabController@show');
