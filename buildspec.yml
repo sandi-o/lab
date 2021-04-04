@@ -10,14 +10,15 @@ phases:
     commands:
       - php artisan config:cache
   post_build:
-    commands:      
-      - ./vendor/bin/phpunit
+    commands: 
+      - php artisan test     
+      #- ./vendor/bin/phpunit
       - echo Build completed on `date`
       - echo $CODEBUILD_SRC_DIR
 reports:
   test-report:
     files:
       - '**/*'
-    base-directory: 'tests/Unit'
+    base-directory: 'tests'
     discard-paths: no
     file-format: "JUNITXML"
