@@ -18,5 +18,6 @@ reports:
   test-report:
     files:
       - '**/*'
-    base-directory: 'tests'
+    base-directory: 'tests/Unit'
+    discard-paths: no
     file-format: "JUNITXML"
