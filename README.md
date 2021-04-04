@@ -7,6 +7,7 @@
 5. php artisan db:seed (this will create a user that will be used when generating a token later)
 6. php artisan passport:install (add to your .env file CLIENT_ID = (paste client id: 2) and CLIENT_SECRET (paste client secret of the client id:2)
 7. php artisan config:cache
+8. php artisan test (tests api's)
 
 
 ```
