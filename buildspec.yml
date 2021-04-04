@@ -18,7 +18,7 @@ phases:
 reports:
   test-report:
     files:
-      - 'test-result.json'
-    base-directory: 'build/test-results/tests'
+      - 'reports.xml'
+    base-directory: 'build'
     discard-paths: no
     file-format: "JUNITXML"

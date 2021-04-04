@@ -17,6 +17,9 @@
             <directory suffix=".php">./app</directory>
         </whitelist>
     </filter>
+    <logging>
+        <log type="junit" target="build/reports.xml"/>
+    </logging>
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
