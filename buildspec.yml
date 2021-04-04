@@ -5,9 +5,14 @@ phases:
       php: '7.3'
     commands:
     - composer install
+    
   build:
     commands:
-    - ./vendor/bin/phpunit
+      - php artisan key:generate
+      - php artisan config:cache
+  post_build:
+    commands:      
+      - ./vendor/bin/phpunit
 reports:
   test-report:
     files:
