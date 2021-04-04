@@ -15,7 +15,8 @@ phases:
       - echo Build completed on `date`
       - echo $CODEBUILD_SRC_DIR
 reports:
-  lab-build-application-test-report:
+  test-report:
     files:
-      - "reports/php/reports.xml"
+      - '**/*'
+    base-directory: 'build/test-results/test'
     file-format: "JUNITXML"
