@@ -8,7 +8,7 @@ phases:
     
   build:
     commands:
-      - php artisan key:generate
+      - php artisan key:generate --force
       - php artisan config:cache
   post_build:
     commands:      
