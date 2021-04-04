@@ -19,6 +19,6 @@ reports:
   test-report:
     files:
       - 'test-result.json'
-    base-directory: 'tests'
+    base-directory: 'build/test-results/tests'
     discard-paths: no
     file-format: "JUNITXML"
