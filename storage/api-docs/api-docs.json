@@ -1,0 +1,193 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Lab API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout",
+                "operationId": "Logout",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/labs/get_all_records": {
+            "get": {
+                "tags": [
+                    "Labs"
+                ],
+                "summary": "Get All lab Records",
+                "description": "Returns Json Array of all records data and their values currently stored in the DB",
+                "operationId": "getLabRecords",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/labs": {
+            "post": {
+                "tags": [
+                    "Labs"
+                ],
+                "summary": "Create or Update a lab record",
+                "operationId": "updstore",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "path",
+                        "description": "contains JSON format key value {mykey : value1}",
+                        "required": true,
+                        "schema": {
+                            "type": "Json"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/labs/{code}": {
+            "get": {
+                "tags": [
+                    "Labs"
+                ],
+                "summary": "Get lab Record information",
+                "description": "Returns lab data base on the code given AND when given a timestamp, return whatever the value of the key at thetime was",
+                "operationId": "getLabByCode",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "code",
+                        "required": true,
+                        "schema": {
+                            "type": "String"
+                        }
+                    },
+                    {
+                        "name": "unix_timestamp",
+                        "in": "path",
+                        "description": "unix timestamp",
+                        "required": false,
+                        "schema": {
+                            "type": "String, Int"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

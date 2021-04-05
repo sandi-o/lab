@@ -22,12 +22,64 @@ class LabController extends Controller
     }
 
     /**
-     * show all record in the resource
+     * @OA\Get(
+     *      path="/labs/get_all_records",
+     *      operationId="getLabRecords",
+     *      tags={"Labs"},
+     *      summary="Get All lab Records",
+     *      description="Returns Json Array of all records data and their values currently stored in the DB",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      security={
+     *         {"passport": {}}
+     *     }
+     * )
      */
     public function showAll() {
         return Lab::all();
     }
 
+    /**
+     * @OA\Post(
+     *     path="/labs",
+     *     tags={"Labs"},
+     *     summary="Create or Update a lab record",
+     *     operationId="updstore",
+     *     @OA\Parameter(
+     *          name="data",
+     *          description="contains JSON format key value {mykey : value1}",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="Json"
+     *          )
+     *      ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+    *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity"
+     *      ),
+     *     @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *     ),
+     *     security={
+     *         {"passport": {}}
+     *     }   
+     * )
+     */
     /**
      * Update or Create a record in the given resource
      * @param  \Illuminate\Http\Request  $request
@@ -71,10 +123,53 @@ class LabController extends Controller
     }
 
     /**
-     * find a given resource base on code
-     * @param Int $code
-     * @param UNIX_timestamp $unix_timestamp
-     * @return \Illuminate\Http\Response json
+     * @OA\Get(
+     *      path="/labs/{code}",
+     *      operationId="getLabByCode",
+     *      tags={"Labs"},
+     *      summary="Get lab Record information",
+     *      description="Returns lab data base on the code given AND when given a timestamp, return whatever the value of the key at thetime was",
+     *      @OA\Parameter(
+     *          name="code",
+     *          description="code",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="String"
+     *          )
+     *      ),
+     *      @OA\Parameter(
+     *          name="unix_timestamp",
+     *          description="unix timestamp",
+     *          required=false,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="String, Int"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *              mediaType="application/json",
+     *          )
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Unprocessable Entity"
+     *      ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Not found"
+     *      ),
+     *      security={
+     *         {"passport": {}}
+     *     }  
+     * )
      */
     public function show(Request $request, $code) {        
         $lab = LabLog::where('code',$code);
