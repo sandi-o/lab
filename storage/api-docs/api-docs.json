@@ -5,7 +5,7 @@
         "version": "0.1"
     },
     "paths": {
-        "/login": {
+        "/api/login": {
             "post": {
                 "tags": [
                     "Auth"
@@ -49,7 +49,7 @@
                 }
             }
         },
-        "/logout": {
+        "/api/logout": {
             "post": {
                 "tags": [
                     "Auth"
@@ -72,7 +72,7 @@
                 }
             }
         },
-        "/labs/get_all_records": {
+        "/api/labs/get_all_records": {
             "get": {
                 "tags": [
                     "Labs"
@@ -98,7 +98,7 @@
                 ]
             }
         },
-        "/labs": {
+        "/api/labs": {
             "post": {
                 "tags": [
                     "Labs"
@@ -134,7 +134,7 @@
                 ]
             }
         },
-        "/labs/{code}": {
+        "/api/labs/{code}": {
             "get": {
                 "tags": [
                     "Labs"
@@ -187,7 +187,27 @@
             }
         }
     },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "http",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://127.0.0.1:8000/oauth/authorize",
+                        "tokenUrl": "http://127.0.0.1:8000/oauth/token",
+                        "refreshUrl": "http://127.0.0.1:8000/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    },
     "security": [
-        []
+        {
+            "passport": []
+        }
     ]
 }

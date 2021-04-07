@@ -20,51 +20,6 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api')->only('logout');
     }
-
-    /**
-     * @OA\Post(
-     ** path="/login",
-     *   tags={"Auth"},
-     *   summary="Login",
-     *   operationId="login",
-     *
-     *   @OA\Parameter(
-     *      name="email",
-     *      in="query",
-     *      required=true,
-     *      @OA\Schema(
-     *           type="string"
-     *      )
-     *   ),
-     *   @OA\Parameter(
-     *      name="password",
-     *      in="query",
-     *      required=true,
-     *      @OA\Schema(
-     *          type="string"
-     *      )
-     *   ),
-     *   @OA\Response(
-     *      response=200,
-     *       description="Success",
-     *      @OA\MediaType(
-     *           mediaType="application/json",
-     *      )
-     *   ),
-     *   @OA\Response(
-     *      response=401,
-     *       description="Unauthenticated"
-     *   ),
-     *   @OA\Response(
-     *      response=400,
-     *      description="Bad Request"
-     *   ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
-     *)
-     **/
     /**
      * Login
      */
@@ -99,30 +54,6 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * @OA\Post(
-     ** path="/logout",
-     *   tags={"Auth"},
-     *   summary="Logout",
-     *   operationId="Logout",
-     *   
-     *   @OA\Response(
-     *      response=200,
-     *      description="Success",
-     *      @OA\MediaType(
-     *           mediaType="application/json",
-     *      )
-     *   ),
-     *   @OA\Response(
-     *       response=401,
-     *       description="Unauthenticated"
-     *   ),
-     *   @OA\Response(
-     *       response=403,
-     *       description="Forbidden"
-     *    )
-     *)
-     **/
     /**
      * Logout and revoke access token
      */

@@ -23,7 +23,7 @@ class LabController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/labs/get_all_records",
+     *      path="/api/labs/get_all_records",
      *      operationId="getLabRecords",
      *      tags={"Labs"},
      *      summary="Get All lab Records",
@@ -50,7 +50,7 @@ class LabController extends Controller
 
     /**
      * @OA\Post(
-     *     path="/labs",
+     *     path="/api/labs",
      *     tags={"Labs"},
      *     summary="Create or Update a lab record",
      *     operationId="updstore",
@@ -124,7 +124,7 @@ class LabController extends Controller
 
     /**
      * @OA\Get(
-     *      path="/labs/{code}",
+     *      path="/api/labs/{code}",
      *      operationId="getLabByCode",
      *      tags={"Labs"},
      *      summary="Get lab Record information",
