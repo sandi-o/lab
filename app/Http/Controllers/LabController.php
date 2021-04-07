@@ -53,14 +53,14 @@ class LabController extends Controller
      *     path="/api/labs",
      *     tags={"Labs"},
      *     summary="Create or Update a lab record",
-     *     operationId="updstore",
+     *     operationId="upstore",
      *     @OA\Parameter(
      *          name="data",
      *          description="contains JSON format key value {mykey : value1}",
      *          required=true,
-     *          in="path",
+     *          in="query",
      *          @OA\Schema(
-     *              type="Json"
+     *              type="object"
      *          )
      *      ),
      *     @OA\Response(
@@ -87,11 +87,12 @@ class LabController extends Controller
      */
     public function upstore(Request $request)
     {
+        //return $request->all();
         $valid = $this->validateIncomingData($request);
         
         if($valid) {
             $results = array();
-            foreach(json_decode($request->data) as $key => $values) {
+            foreach($request->all() as $key => $values) {
                 if(!$this->validKeyDataType($key)) {
                     return $this->error('Invalid data format.',422);
                 }
@@ -135,7 +136,7 @@ class LabController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              type="String"
+     *              type="string"
      *          )
      *      ),
      *      @OA\Parameter(
@@ -144,7 +145,7 @@ class LabController extends Controller
      *          required=false,
      *          in="path",
      *          @OA\Schema(
-     *              type="String, Int"
+     *              type="int"
      *          )
      *      ),
      *      @OA\Response(
@@ -203,8 +204,8 @@ class LabController extends Controller
      */
     protected function validateIncomingData($request)
     {
-        json_decode($request->data,true);
-        return (json_last_error() == JSON_ERROR_NONE);
+        //json_decode($request->all(),true);
+        return $request->all();//(!json_last_error() == JSON_ERROR_NONE);
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 /**
- * @OA\Info(title="Lab API", version="0.1")
+ * @OA\Info(title="Lab API", version="0.2")
  */
 class Controller extends BaseController
 {
